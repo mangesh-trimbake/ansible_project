@@ -1,0 +1,37 @@
+# nginx.conf.j2
+user nginx;
+worker_processes auto;
+error_log /var/log/nginx/error.log;
+pid /run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+    
+    server {
+        listen 80;
+        server_name {{ nginx_server_name }};
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html;
+        }
+    }
+
+    server {
+        listen 443 ssl;
+        server_name {{ nginx_server_name }};
+
+        ssl_certificate ssl/server.crt;
+        ssl_certificate_key ssl/server.key;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html;
+        }
+    }
+}

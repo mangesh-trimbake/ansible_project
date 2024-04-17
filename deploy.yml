@@ -1,0 +1,14 @@
+# deploy.yml
+---
+- name: Deploy Web Server
+  hosts: all
+  become: true
+  vars:
+    nginx_server_name: "vijaya.chickenkiller.com"
+  roles:
+    - webserver
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

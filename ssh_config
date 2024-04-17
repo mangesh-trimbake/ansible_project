@@ -1,0 +1,4 @@
+Host 13.53.116.86
+    HostName 13.53.116.86
+    User ubuntu
+    IdentityFile ssh/Systemonex@2022.pem
