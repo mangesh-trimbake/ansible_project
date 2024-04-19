@@ -1,5 +1,5 @@
 # nginx.conf.j2
-user nginx;
+user ubuntu;
 worker_processes auto;
 error_log /var/log/nginx/error.log;
 pid /run/nginx.pid;
@@ -26,8 +26,8 @@ http {
         listen 443 ssl;
         server_name {{ nginx_server_name }};
 
-        ssl_certificate ssl/server.crt;
-        ssl_certificate_key ssl/server.key;
+        ssl_certificate /etc/nginx/ssl/server.crt;
+        ssl_certificate_key /etc/nginx/ssl/server.key;
 
         location / {
             root /usr/share/nginx/html;

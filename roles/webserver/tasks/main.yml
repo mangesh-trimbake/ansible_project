@@ -4,19 +4,14 @@
   package:
     name: "{{ item }}"
     state: present
-  loop:
+  with_items:
     - nginx
   become: true
 
 - name: Copy index.html
   copy:
     src: index.html
-    dest: /usr/share/nginx/html/index.html
+    dest: /usr/share/nginx/html/index.html 
   become: true
 
-- name: Ensure Nginx service is enabled and started
-  service:
-    name: nginx
-    state: started
-    enabled: true
-  become: true
+

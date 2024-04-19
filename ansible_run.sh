@@ -1,1 +1,1 @@
-ansible-playbook -i inventory deploy.yml --ssh-common-args="-F ssh_config"
+ansible-playbook -i inventory deploy.yml --ssh-common-args="-F ssh_config" -vvvv
